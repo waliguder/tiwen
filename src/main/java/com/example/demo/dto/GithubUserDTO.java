@@ -5,6 +5,8 @@ public class GithubUserDTO {
     private Long id;
     private String bio;
 
+
+
     public String getName() {
         return name;
     }
@@ -27,5 +29,14 @@ public class GithubUserDTO {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    @Override
+    public String toString() {
+        return "GithubUserDTO{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", bio='" + bio + '\'' +
+                '}';
     }
 }
