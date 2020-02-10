@@ -1,0 +1,20 @@
+.main{
+    margin: 30px;
+    background-color: white;
+}
+body{
+    background-color: #efefef;
+}
+#btn-publish{
+    float: right;
+    margin-bottom: 15px;
+}
+.img-self{
+    width: 45px;
+    height: 45px;
+}
+.text-info{
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+}

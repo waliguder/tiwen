@@ -50,3 +50,15 @@ git push  //确认提交
 //最后再terminal中运行mvn flyway:migrate
 //它会自动的创建一个h2数据库和其中的表格
 ```
+
+### 开发流程总结
+```sql
+    1，先确定一个页面路径，比如文章发布页面publish，主体对象是question，
+    2，你就要开始写一个controller，叫publishController，定义好前端模版publish.html
+       在controller中定一个访问方法，里面用RequestParam接收页面form表单传送过来的数据
+       用Model会传给前端页面
+    3.在controller中要对数据进行增删查改操作的话就需要写一个questionMapper，用Autowired注入即可
+    5.在使用questionMapper之前必须先写一个question实例对象（放在model中），用来携带form表单传送来的数据到questionMapper中
+    4.在questionMapper中定义一个方法接收一个question实例，然后再方法前面添加一个@inser（插入）或者@select（查询）的注解，在后面的括号中写sql语句
+基本的开发流程就是这样，详细的看代码即可。
+```

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>码匠社区</title>
+    <title>发布提问</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -54,53 +54,40 @@
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 发现</h2>
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
             <hr>
-            <div class="media" th:each="question : ${pagination.questions}">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object img-rounded img-self" th:src="${question.user.avatarUrl}">
-                    </a>
+            <form action="/publish" method="post">
+                <div class="form-group">
+                    <label for="title">问题标题(简明扼要)</label>
+                    <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="问题标题...">
                 </div>
-                <div class="media-body">
-                    <h4 class="media-heading" th:text="${question.title}"></h4>
-                    <span th:text="${question.description}"></span><br>
-                    <span class="text-info"><span th:text="${question.commentCount}"></span> 个回复 - <span th:text="${question.viewCount}"></span> 次浏览 </span><br>
-                    <span class="text-info" th:text="${#dates.format(question.getGmtCreate(),'yyyy-MM-dd HH:mm')}"></span>
-                    <hr>
+                <div class="form-group">
+                    <label for="title">问题补充</label>
+                    <textarea name="description" id="description" th:text="${description}" class="form-control" cols="30" rows="10"></textarea>
                 </div>
-            </div>
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li th:if="${pagination.showFirstPage}">
-                        <a th:href="@{/(page=1)}" aria-label="Previous">
-                            <span aria-hidden="true">&lt;&lt;</span>
-                        </a>
-                    </li>
-                    <li th:if="${pagination.showPrevious}">
-                        <a th:href="@{/(page = ${pagination.page - 1})}" aria-label="Previous">
-                            <span aria-hidden="true">&lt;</span>
-                        </a>
-                    </li>
-                    <li th:each="page:${pagination.pages}" th:class="${pagination.page == page} ? 'active': '' "><a th:href="@{/(page=${page})}" th:text="${page}"></a></li>
-                    <li th:if="${pagination.showNext}">
-                        <a th:href="@{/(page = ${pagination.page + 1})}" aria-label="Previous">
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
-                    </li>
-                    <li th:if="${pagination.showLastPage}">
-                        <a th:href="@{/(page=${pagination.pages.size()})}" aria-label="Next">
-                            <span aria-hidden="true">&gt;&gt;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+                <div class="form-group">
+                    <label for="title">添加标签</label>
+                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="输入标签，以逗号隔开">
+                </div>
+                <div class="container-fluid main">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12" role="alert" th:text="${error}" th:if="${error != null}"></div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"><button type="submit" id="btn-publish" class="btn btn-success">发布</button></div>
+
+                    </div>
+                </div>
+
+            </form>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h3>最新热门</h3>
+            <h3>问题发起指南</h3>
+            1.问题标题必须简明扼要，不超过25个字<br>
+            2.问题补充确保详细直观，并提供一些相关资料<br>
+            3.添加标签以逗号隔开，每个标签不超过10个字<br>
         </div>
     </div>
 </div>
-
 </body>
 </html>
