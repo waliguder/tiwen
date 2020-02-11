@@ -18,12 +18,13 @@ public class PageDTO {
     private boolean showLastPage = true;
     private Integer page;
     private List<Integer> pages = new ArrayList<>();
+    private Integer totalPage;
 
     public void setPagination(Integer totalCount, Integer page, Integer size) {
         //计算页码数
         double num = Math.ceil(totalCount * 1.0 /size);
         Integer pageNum =(int) num;
-
+        this.totalPage = pageNum;
         //page 容错
         if(page<1){
             page=1;
