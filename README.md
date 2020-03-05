@@ -2,8 +2,8 @@
 
 ## 提问社区
 
-##资料
-####git使用
+## 资料
+#### git使用
 
 
 ```
@@ -12,9 +12,9 @@ git commit -m "描述"  //将项目文件提交
 git push  //确认提交
 ```
 
-####flyway使用
-######flay way介绍：一个数据库脚本版本控制器，帮助多人开发对数据库脚本进行集合整理。
-######使用步骤：
+#### flyway使用
+###### flay way介绍：一个数据库脚本版本控制器，帮助多人开发对数据库脚本进行集合整理。
+###### 使用步骤：
 ```sql
 //首先在maven中添加依赖
 <project xmlns="...">
@@ -61,4 +61,9 @@ git push  //确认提交
     5.在使用questionMapper之前必须先写一个question实例对象（放在model中），用来携带form表单传送来的数据到questionMapper中
     4.在questionMapper中定义一个方法接收一个question实例，然后再方法前面添加一个@inser（插入）或者@select（查询）的注解，在后面的括号中写sql语句
 基本的开发流程就是这样，详细的看代码即可。
+```
+
+### mybatis generetor使用
+```sql
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```

@@ -22,3 +22,15 @@ body{
 .profile .section{
     margin-top: 15px;
 }
+
+.community-menu{
+    color: #999;
+    font-size: 12px;
+}
+.community-width95{
+    width: 95%;
+    margin-top: 15px;
+}
+.community-mart50{
+    margin: 50px;
+}
